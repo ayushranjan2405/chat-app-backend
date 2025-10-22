@@ -7,6 +7,8 @@ import org.springframework.web.socket.config.annotation.StompEndpointRegistry;
 import org.springframework.web.socket.config.annotation.WebSocketConfigurer;
 import org.springframework.web.socket.config.annotation.WebSocketMessageBrokerConfigurer;
 
+import static com.substring.chat.config.AppConstants.FRONT_END_BASE_URL;
+
 @Configuration
 @EnableWebSocketMessageBroker
 public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
@@ -23,7 +25,7 @@ public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
     @Override
     public void registerStompEndpoints(StompEndpointRegistry registry) {
         registry.addEndpoint("/chat")                   // Connection establishment
-                .setAllowedOrigins("http://localhost:5173")
+                .setAllowedOrigins(AppConstants.FRONT_END_BASE_URL)
                 .withSockJS();
     }
     //connection will establish at chat endpoint
